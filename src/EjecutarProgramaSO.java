@@ -1,26 +1,24 @@
-import java.io.FileInputStream;
-import java.util.Properties;
+import java.util.Locale;
 
-
-public class Pizarra {
+public class EjecutarProgramaSO {
     public static void main(String[] args) {
         Runtime rt = Runtime.getRuntime();
-        Process process;
-        try{
+        Process proceso;
+        try {
             if(System.getProperty("os.name").toLowerCase().startsWith("windows")){
-                process = rt.exec("notepad");
+                proceso = rt.exec("notepad");
             }else if(System.getProperty("os.name").toLowerCase().startsWith("mac")){
-                process = rt.exec("texedit");
+                proceso = rt.exec("texedit");
             }else if(System.getProperty("os.name").toLowerCase().startsWith("nux") || System.getProperty("os.name").toLowerCase().startsWith("nix")){
-                process = rt.exec("gedit");
+                proceso = rt.exec("gedit");
             }
             else{
-                process = rt.exec("gedit");
+                proceso = rt.exec("gedit");
             }
-            process.waitFor();
-        }catch (Exception e){
-            System.err.println("e = :" + e);
+            proceso.waitFor();
+        } catch (Exception e){
+            System.err.println("e = " + e.getMessage());
         }
-        System.out.println("Se cerro el programa.");
+        System.out.println("Se ha cerrado el editor");
     }
 }
